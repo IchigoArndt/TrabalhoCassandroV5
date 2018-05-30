@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Arquivos de Origem">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Arquivos de Recurso">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\3.Domain">
+      <UniqueIdentifier>{69e3fe95-4ed9-485e-baad-6f906ddca469}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\3.Domain\Features">
+      <UniqueIdentifier>{a82d5dcb-53a6-42c1-a56b-b18c6ee88ed0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\3.Domain\Features\Clientes">
+      <UniqueIdentifier>{e4587bad-65e3-46a3-9f19-5e0f1d746aec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\3.Domain\Features\Enderecos">
+      <UniqueIdentifier>{c471632d-e32b-4498-8c06-ddf12bc4b35a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\3.Domain\Features\Profissoes">
+      <UniqueIdentifier>{0a87f835-80fe-4bc2-99fd-eb49bdbbd136}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\3.Domain">
+      <UniqueIdentifier>{bc94b6a0-e4e6-425f-b521-10da53e21134}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\3.Domain\Features">
+      <UniqueIdentifier>{c989fd53-1950-4ce8-b81d-6926c2e50b76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\3.Domain\Features\Clientes">
+      <UniqueIdentifier>{d7720479-4da2-4f96-80bc-c7791f2c1a66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\3.Domain\Features\Enderecos">
+      <UniqueIdentifier>{1177b0b4-2e53-49b6-9c2d-9673b2ddec68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\3.Domain\Features\Profissoes">
+      <UniqueIdentifier>{d9b85177-e436-4f16-9a75-6301182830e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\1.WinApp">
+      <UniqueIdentifier>{3d128024-5c3c-42f6-b4a6-51044d310d02}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FormPrincipal.cpp">
+      <Filter>Arquivos de Origem\1.WinApp</Filter>
+    </ClCompile>
+    <ClCompile Include="CadastroCliente.cpp">
+      <Filter>Arquivos de Origem\1.WinApp</Filter>
+    </ClCompile>
+    <ClCompile Include="ClienteDomainV2.cpp">
+      <Filter>Arquivos de Origem\3.Domain\Features\Clientes</Filter>
+    </ClCompile>
+    <ClCompile Include="EnderecoDomainV2.cpp">
+      <Filter>Arquivos de Origem\3.Domain\Features\Enderecos</Filter>
+    </ClCompile>
+    <ClCompile Include="ProfissaoDomainV2.cpp">
+      <Filter>Arquivos de Origem\3.Domain\Features\Profissoes</Filter>
+    </ClCompile>
+    <ClCompile Include="CadastroProfissao.cpp">
+      <Filter>Arquivos de Origem\1.WinApp</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FormPrincipal.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="CadastroCliente.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="CadastroClienteForm.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="ClienteDomainV2.h">
+      <Filter>Arquivos de Cabeçalho\3.Domain\Features\Clientes</Filter>
+    </ClInclude>
+    <ClInclude Include="EnderecoDomainV2.h">
+      <Filter>Arquivos de Cabeçalho\3.Domain\Features\Enderecos</Filter>
+    </ClInclude>
+    <ClInclude Include="ProfissaoDomainV2.h">
+      <Filter>Arquivos de Cabeçalho\3.Domain\Features\Profissoes</Filter>
+    </ClInclude>
+    <ClInclude Include="CadastroProfissao.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FormPrincipal.resx">
+      <Filter>Arquivos de Recurso</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroCliente.resx">
+      <Filter>Arquivos de Recurso</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroClienteForm.resx">
+      <Filter>Arquivos de Recurso</Filter>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
