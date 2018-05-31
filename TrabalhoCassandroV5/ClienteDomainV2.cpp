@@ -21,7 +21,7 @@ void ClienteDomainV2::Validate(){
 }
 String^ ClienteDomainV2::ToStringCliente()
 {
-	String^ tostring = "Id :" + this->id + "  Nome :" + this->Nome + "  CPF :" + this->CPF + "  Salário :" + this->profissao->Salario;
+	String^ tostring = "Id :" + this->id + "\n  Nome :" + this->Nome + "\n  CPF :" + this->CPF + "\n  Salário :" + this->profissao->Salario;
 	return tostring;
 }
 

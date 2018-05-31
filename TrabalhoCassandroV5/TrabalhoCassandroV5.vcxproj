@@ -135,10 +135,13 @@
   <ItemGroup>
     <ClCompile Include="CadastroCliente.cpp" />
     <ClCompile Include="CadastroProfissao.cpp" />
+    <ClCompile Include="CadastroVenda.cpp" />
+    <ClCompile Include="CadastroVendaForm.cpp" />
     <ClCompile Include="ClienteDomainV2.cpp" />
     <ClCompile Include="EnderecoDomainV2.cpp" />
     <ClCompile Include="FormPrincipal.cpp" />
     <ClCompile Include="ProfissaoDomainV2.cpp" />
+    <ClCompile Include="VendaDomainV2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CadastroCliente.h">
@@ -150,12 +153,19 @@
     <ClInclude Include="CadastroProfissao.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="CadastroVenda.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="CadastroVendaForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ClienteDomainV2.h" />
     <ClInclude Include="EnderecoDomainV2.h" />
     <ClInclude Include="FormPrincipal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ProfissaoDomainV2.h" />
+    <ClInclude Include="VendaDomainV2.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CadastroCliente.resx">
@@ -166,6 +176,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CadastroProfissao.resx">
       <DependentUpon>CadastroProfissao.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroVenda.resx">
+      <DependentUpon>CadastroVenda.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroVendaForm.resx">
+      <DependentUpon>CadastroVendaForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.h</DependentUpon>

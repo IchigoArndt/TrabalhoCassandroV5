@@ -1,4 +1,5 @@
 #include "CadastroCliente.h"
+#include "CadastroVenda.h"
 
 namespace TrabalhoCassandroV5 {
 
@@ -105,6 +106,7 @@ namespace TrabalhoCassandroV5 {
 			this->toolStripMenuItem4->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::V));
 			this->toolStripMenuItem4->Size = System::Drawing::Size(180, 22);
 			this->toolStripMenuItem4->Text = L"Venda";
+			this->toolStripMenuItem4->Click += gcnew System::EventHandler(this, &FormPrincipal::toolStripMenuItem4_Click);
 			// 
 			// FormPrincipal
 			// 
@@ -131,6 +133,11 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 	MessageBox::Show("Se fudeu otário !\n" + "Não tem como Apagar Dados Babaca");
 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void toolStripMenuItem4_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+	CadastroVenda cv;
+	cv.ShowDialog();
 }
 };
 }

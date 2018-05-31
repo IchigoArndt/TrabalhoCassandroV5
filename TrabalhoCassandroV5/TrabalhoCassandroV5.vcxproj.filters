@@ -46,6 +46,12 @@
     <Filter Include="Arquivos de Origem\1.WinApp">
       <UniqueIdentifier>{3d128024-5c3c-42f6-b4a6-51044d310d02}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Arquivos de Cabeçalho\3.Domain\Features\Venda">
+      <UniqueIdentifier>{86b60cb4-5226-495b-9e7e-57f6968fc28a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\3.Domain\Features\Vendas">
+      <UniqueIdentifier>{7bdb20a2-f8ba-415a-9641-9f545593c252}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FormPrincipal.cpp">
@@ -65,6 +71,15 @@
     </ClCompile>
     <ClCompile Include="CadastroProfissao.cpp">
       <Filter>Arquivos de Origem\1.WinApp</Filter>
+    </ClCompile>
+    <ClCompile Include="CadastroVenda.cpp">
+      <Filter>Arquivos de Origem\1.WinApp</Filter>
+    </ClCompile>
+    <ClCompile Include="CadastroVendaForm.cpp">
+      <Filter>Arquivos de Origem\1.WinApp</Filter>
+    </ClCompile>
+    <ClCompile Include="VendaDomainV2.cpp">
+      <Filter>Arquivos de Origem\3.Domain\Features\Vendas</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +104,15 @@
     <ClInclude Include="CadastroProfissao.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
+    <ClInclude Include="CadastroVenda.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="CadastroVendaForm.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="VendaDomainV2.h">
+      <Filter>Arquivos de Cabeçalho\3.Domain\Features\Venda</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FormPrincipal.resx">
@@ -98,6 +122,12 @@
       <Filter>Arquivos de Recurso</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="CadastroClienteForm.resx">
+      <Filter>Arquivos de Recurso</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroProfissao.resx">
+      <Filter>Arquivos de Recurso</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroVenda.resx">
       <Filter>Arquivos de Recurso</Filter>
     </EmbeddedResource>
   </ItemGroup>

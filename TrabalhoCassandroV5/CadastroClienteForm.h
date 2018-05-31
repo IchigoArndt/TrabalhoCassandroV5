@@ -289,7 +289,14 @@ namespace TrabalhoCassandroV5 {
 			//Grava No Arquivo o cliente com suas infromações
 			FileStream^ fs = gcnew FileStream("C:\\Users\\Luiz Arndt\\Documents\\Visual Studio 2017\\Projects\\TrabalhoCassandroV5\\TrabalhoCassandroV5\\ClientesTxt.txt", FileMode::OpenOrCreate);
 			StreamWriter^ arquivoTxt = gcnew StreamWriter(fs);
-			arquivoTxt->WriteLine(cliente.ToStringCliente());
+			arquivoTxt->WriteLine("Id :");
+			arquivoTxt->WriteLine(cliente.id);
+			arquivoTxt->WriteLine("Nome :");
+			arquivoTxt->WriteLine(cliente.Nome);
+			arquivoTxt->WriteLine("CPF :");
+			arquivoTxt->WriteLine(cliente.CPF);
+			arquivoTxt->WriteLine("Salário :");
+			arquivoTxt->WriteLine(cliente.profissao->Salario);
 			arquivoTxt->Close();
 			MessageBox::Show("Cliente Gravado com sucesso !");
 			this->Close();
@@ -323,6 +330,18 @@ private: System::Void btnProfissao_Click(System::Object^  sender, System::EventA
 {
 }
 private: System::Void textBox3_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+
+	if (textBox3->Text->Contains(".") || textBox3->Text->Contains("-") || textBox3->Text->Contains("/"))
+		MessageBox::Show("CPF Deve conter apenas numeros");
+	if (textBox3->TextLength == 11)
+	{
+		ClienteDomainV2^ cliente = gcnew ClienteDomainV2();
+		bool validoCpf = cliente->verificaCpf(textBox3->Text);
+		if (validoCpf == true)
+			MessageBox::Show("CPF Válido !");
+		else
+			MessageBox::Show("CPF Inválido !");
+	}
 }
 };
 }

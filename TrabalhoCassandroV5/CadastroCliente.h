@@ -124,6 +124,7 @@ namespace TrabalhoCassandroV5 {
 	}
 	private: void PopularListagem() 
 	{
+		lbTxt->Items->Clear();
 		String^ Path = "C:\\Users\\Luiz Arndt\\Documents\\Visual Studio 2017\\Projects\\TrabalhoCassandroV5\\TrabalhoCassandroV5\\ClientesTxt.txt";
 		if (File::Exists(Path) == false)
 			MessageBox::Show("A lista será carregada vazia\n pois o arquivo não Existe !");
