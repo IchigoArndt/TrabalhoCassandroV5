@@ -59,6 +59,8 @@ namespace TrabalhoCassandroV5 {
 	private: System::Windows::Forms::Button^  btnCancelar;
 
 	public: double Salario;
+	public:	String^ Nome;
+	public:	String^ Cpf;
 
 	private:
 		/// <summary>
@@ -263,8 +265,6 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 	while (sr->Peek()>=0)
 	{
 		String^ pesquisa = sr->ReadLine();
-		String^ Nome;
-		String^ Cpf;
 		if (pesquisa->Contains(tbCliente->Text))
 		{
 			Nome = pesquisa;
@@ -285,35 +285,51 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 }
 private: System::Void btnCadastrar_Click(System::Object^  sender, System::EventArgs^  e) 
 {
-	VendaDomainV2^ venda = gcnew VendaDomainV2();
-	venda->Descricao = tbDescricao->Text;
-	venda->valor = Convert::ToDouble(tbValor->Text);
-	venda->ano_modelo = Convert::ToInt32(tbAno->Text);
-	venda->prazo = Convert::ToInt32(tbPrazo->Text);
-	venda->Bem = tbBem->Text;
-	try
+	if (String::IsNullOrEmpty(Nome) || String::IsNullOrEmpty(Cpf) || String::IsNullOrEmpty(Salario.ToString()))
 	{
-		venda->validate();
+		MessageBox::Show("Cliente não pode ficar vazio !");
+		this->Close();
 	}
-	catch (Exception^ e)
+	else
 	{
-		MessageBox::Show(e->Message);
+		VendaDomainV2^ venda = gcnew VendaDomainV2();
+		venda->Descricao = tbDescricao->Text;
+		venda->valor = Convert::ToDouble(tbValor->Text);
+		venda->ano_modelo = Convert::ToInt32(tbAno->Text);
+		venda->prazo = Convert::ToInt32(tbPrazo->Text);
+		venda->Bem = tbBem->Text;
+		try
+		{
+			venda->validate();
+		}
+		catch (Exception^ e)
+		{
+			MessageBox::Show(e->Message);
+		}
+		if (venda->CalcularResultado(Salario) == true)
+		{
+			double precoParcela = venda->valor / venda->prazo;
+			MessageBox::Show("Parabéns você adquiriu um " + venda->Bem + "\nValor :" + venda->valor + "\nPrazo :" + venda->prazo + "\nPreco por parcela :" + precoParcela.ToString());
+			FileStream^ fs = gcnew FileStream("C:\\Users\\Luiz Arndt\\Documents\\Visual Studio 2017\\Projects\\TrabalhoCassandroV5\\TrabalhoCassandroV5\\Vendas.txt", FileMode::OpenOrCreate);
+			StreamWriter^ VendaEscrita = gcnew StreamWriter(fs);
+			VendaEscrita->WriteLine("Descrição :" + venda->Descricao);
+			VendaEscrita->WriteLine("Valor :" + venda->valor);
+			VendaEscrita->WriteLine("Ano/Modelo :" + venda->ano_modelo);
+			VendaEscrita->WriteLine("Prazo :" + venda->prazo);
+			VendaEscrita->WriteLine("Bem :" + venda->Bem);
+			VendaEscrita->WriteLine("Cliente");
+			VendaEscrita->WriteLine("Nome :"+Nome);
+			VendaEscrita->WriteLine("Cpf  :" +Cpf);
+			VendaEscrita->Close();
+			MessageBox::Show("Venda Gravada com Sucesso !");
+			this->Close();
+		}
+		else
+		{
+			MessageBox::Show("Infelizmente não foi possivel efetuar a venda deste Veiculo :" + venda->Descricao + "\nDevido a sua Renda '_' !");
+			this->Close();
+		}
 	}
-	if (venda->CalcularResultado(Salario) == true)
-	{
-		double precoParcela = venda->valor / venda->prazo;
-		MessageBox::Show("Parabéns você adquiriu um " + venda->Bem+"\nValor :"+ venda->valor + "\nPrazo :"+venda->prazo+"\nPreco por parcela :"+precoParcela.ToString());
-	}
-
-	FileStream^ fs = gcnew FileStream("C:\\Users\\Luiz Arndt\\Documents\\Visual Studio 2017\\Projects\\TrabalhoCassandroV5\\TrabalhoCassandroV5\\Vendas.txt", FileMode::OpenOrCreate);
-	StreamWriter^ VendaEscrita = gcnew StreamWriter(fs);
-	VendaEscrita->WriteLine("Descrição :"+venda->Descricao);
-	VendaEscrita->WriteLine("Valor :"+venda->valor);
-	VendaEscrita->WriteLine("Ano/Modelo :"+venda->ano_modelo);
-	VendaEscrita->WriteLine("Prazo :"+venda->prazo);
-	VendaEscrita->WriteLine("Bem :"+venda->Bem);
-	VendaEscrita->Close();
-	MessageBox::Show("Venda Gravada com Sucesso !");
 }
 };
 }

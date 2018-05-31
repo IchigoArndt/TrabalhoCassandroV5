@@ -17,7 +17,7 @@ namespace TrabalhoCassandroV5 {
 	public ref class CadastroCliente : public System::Windows::Forms::Form
 	{
 	public:
-		CadastroCliente(void)
+		CadastroCliente()
 		{
 			InitializeComponent();
 			PopularListagem();
@@ -71,6 +71,7 @@ namespace TrabalhoCassandroV5 {
 			this->lbTxt->Name = L"lbTxt";
 			this->lbTxt->Size = System::Drawing::Size(372, 342);
 			this->lbTxt->TabIndex = 0;
+			this->lbTxt->SelectedIndexChanged += gcnew System::EventHandler(this, &CadastroCliente::lbTxt_SelectedIndexChanged);
 			// 
 			// toolStrip1
 			// 
@@ -150,6 +151,8 @@ private: System::Void tspDeletar_Click(System::Object^  sender, System::EventArg
 		lbTxt->Items->Clear();
 		PopularListagem();
 	}
+}
+private: System::Void lbTxt_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 }
 };
 }

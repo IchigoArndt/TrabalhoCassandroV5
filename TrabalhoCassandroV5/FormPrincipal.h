@@ -125,6 +125,7 @@ namespace TrabalhoCassandroV5 {
 		}
 #pragma endregion
 	private: System::Void btnCadastrar_Click(System::Object^  sender, System::EventArgs^  e) {
+		this->Close();
 		CadastroCliente cc;
 		cc.ShowDialog();
 

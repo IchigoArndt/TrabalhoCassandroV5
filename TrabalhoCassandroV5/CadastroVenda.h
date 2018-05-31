@@ -15,9 +15,10 @@ namespace TrabalhoCassandroV5 {
 	public ref class CadastroVenda : public System::Windows::Forms::Form
 	{
 	public:
-		CadastroVenda(void)
+		CadastroVenda()
 		{
 			InitializeComponent();
+			PopularListagem();
 			//
 			//TODO: Adicione o código do construtor aqui
 			//
@@ -36,8 +37,10 @@ namespace TrabalhoCassandroV5 {
 		}
 	private: System::Windows::Forms::ToolStrip^  toolStrip1;
 	private: System::Windows::Forms::ToolStripButton^  btnCadastrar;
-	private: System::Windows::Forms::ToolStripButton^  btnAtualizar;
-	private: System::Windows::Forms::ListBox^  listBox1;
+	private: System::Windows::Forms::ToolStripButton^  btnDeletar;
+
+	private: System::Windows::Forms::ListBox^  lbVendas;
+
 	protected:
 
 	private:
@@ -56,14 +59,14 @@ namespace TrabalhoCassandroV5 {
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(CadastroVenda::typeid));
 			this->toolStrip1 = (gcnew System::Windows::Forms::ToolStrip());
 			this->btnCadastrar = (gcnew System::Windows::Forms::ToolStripButton());
-			this->btnAtualizar = (gcnew System::Windows::Forms::ToolStripButton());
-			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
+			this->btnDeletar = (gcnew System::Windows::Forms::ToolStripButton());
+			this->lbVendas = (gcnew System::Windows::Forms::ListBox());
 			this->toolStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// toolStrip1
 			// 
-			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) { this->btnCadastrar, this->btnAtualizar });
+			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) { this->btnCadastrar, this->btnDeletar });
 			this->toolStrip1->Location = System::Drawing::Point(0, 0);
 			this->toolStrip1->Name = L"toolStrip1";
 			this->toolStrip1->Size = System::Drawing::Size(415, 25);
@@ -80,29 +83,30 @@ namespace TrabalhoCassandroV5 {
 			this->btnCadastrar->Text = L"Cadastrar";
 			this->btnCadastrar->Click += gcnew System::EventHandler(this, &CadastroVenda::btnCadastrar_Click);
 			// 
-			// btnAtualizar
+			// btnDeletar
 			// 
-			this->btnAtualizar->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
-			this->btnAtualizar->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnAtualizar.Image")));
-			this->btnAtualizar->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->btnAtualizar->Name = L"btnAtualizar";
-			this->btnAtualizar->Size = System::Drawing::Size(57, 22);
-			this->btnAtualizar->Text = L"Atualizar";
+			this->btnDeletar->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
+			this->btnDeletar->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnDeletar.Image")));
+			this->btnDeletar->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btnDeletar->Name = L"btnDeletar";
+			this->btnDeletar->Size = System::Drawing::Size(48, 22);
+			this->btnDeletar->Text = L"Deletar";
+			this->btnDeletar->Click += gcnew System::EventHandler(this, &CadastroVenda::btnDeletar_Click);
 			// 
-			// listBox1
+			// lbVendas
 			// 
-			this->listBox1->FormattingEnabled = true;
-			this->listBox1->Location = System::Drawing::Point(0, 30);
-			this->listBox1->Name = L"listBox1";
-			this->listBox1->Size = System::Drawing::Size(415, 264);
-			this->listBox1->TabIndex = 1;
+			this->lbVendas->FormattingEnabled = true;
+			this->lbVendas->Location = System::Drawing::Point(0, 30);
+			this->lbVendas->Name = L"lbVendas";
+			this->lbVendas->Size = System::Drawing::Size(415, 264);
+			this->lbVendas->TabIndex = 1;
 			// 
 			// CadastroVenda
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(415, 293);
-			this->Controls->Add(this->listBox1);
+			this->Controls->Add(this->lbVendas);
 			this->Controls->Add(this->toolStrip1);
 			this->Name = L"CadastroVenda";
 			this->Text = L"CadastroVenda";
@@ -119,5 +123,34 @@ namespace TrabalhoCassandroV5 {
 
 		cvf.ShowDialog();
 	}
+	private: void PopularListagem()
+	{
+		lbVendas->Items->Clear();
+		String^ Path = "C:\\Users\\Luiz Arndt\\Documents\\Visual Studio 2017\\Projects\\TrabalhoCassandroV5\\TrabalhoCassandroV5\\Vendas.txt";
+		if (File::Exists(Path) == false)
+			MessageBox::Show("A lista será carregada vazia\n pois o arquivo não Existe !");
+		else
+		{
+			int cont = 0;
+			FileStream^ fs = gcnew FileStream(Path, FileMode::Open);
+			StreamReader^ sr = gcnew StreamReader(fs);
+			while (sr->Peek() >= 0)
+			{
+				lbVendas->Items->Add(sr->ReadLine());
+			}
+			sr->Close();
+		}
+	}
+private: System::Void btnDeletar_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+	String^ Path = "C:\\Users\\Luiz Arndt\\Documents\\Visual Studio 2017\\Projects\\TrabalhoCassandroV5\\TrabalhoCassandroV5\\Vendas.txt";
+	if (MessageBox::Show("você realmente deseja excluir", "deletar", MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes)
+	{
+		File::Delete(Path);
+		MessageBox::Show("Arquivo Deletado !");
+		lbVendas->Items->Clear();
+		PopularListagem();
+	}
+}
 };
 }
