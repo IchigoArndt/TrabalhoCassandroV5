@@ -1,8 +1,0 @@
-Id :
-86816
-Nome :
-Luiz Arndt
-CPF :
-01253027978
-Salário :
-2500

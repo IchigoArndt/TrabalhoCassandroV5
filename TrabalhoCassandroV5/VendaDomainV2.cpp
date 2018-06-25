@@ -20,8 +20,9 @@ void VendaDomainV2::validate()
 
 bool VendaDomainV2::CalcularResultado(double salario)
 {
-	double Resultado = (this->valor / this->prazo)* 0.30;
-	if (salario > Resultado)
+	double Resultado = (this->valor / this->prazo);
+	double Calculo = salario * 0.30;
+	if (Calculo > Resultado)
 	{
 		this->resultado = Resultado;
 		return true;

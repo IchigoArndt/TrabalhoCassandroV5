@@ -155,6 +155,7 @@ namespace TrabalhoCassandroV5 {
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(182, 20);
 			this->textBox2->TabIndex = 6;
+			this->textBox2->TextChanged += gcnew System::EventHandler(this, &CadastroClienteForm::textBox2_TextChanged);
 			// 
 			// textBox3
 			// 
@@ -216,6 +217,7 @@ namespace TrabalhoCassandroV5 {
 			// 
 			// btnPesquisarCep
 			// 
+			this->btnPesquisarCep->Enabled = false;
 			this->btnPesquisarCep->Location = System::Drawing::Point(99, 64);
 			this->btnPesquisarCep->Name = L"btnPesquisarCep";
 			this->btnPesquisarCep->Size = System::Drawing::Size(75, 23);
@@ -258,19 +260,21 @@ namespace TrabalhoCassandroV5 {
 			Random rnd;
 			ClienteDomainV2 cliente;
 			cliente.id = rnd.Next(1, 1000000);
-			cliente.Nome = textBox1->Text;
-			//Valida o cpf
-			if (cliente.verificaCpf(textBox3->Text) == true)
+			bool validoCpf = cliente.verificaCpf(textBox3->Text);
+			if ( validoCpf == true)
+			{
+
+				cliente.Nome = textBox1->Text;
+				//Valida o cpf
+
 				cliente.CPF = textBox3->Text;
-			else
-				throw gcnew Exception("Cpf Inválido");
 			//////////////////////////////////////////
 			if (String::IsNullOrEmpty(textBox4->Text))
 				throw gcnew Exception("Campo do rg não pode ser vazio ou\n conter letra");
 			cliente.RG = Convert::ToInt32(textBox4->Text);
 			cliente.DataNascimento = textBox5->Text;
 			cliente.NomeMae = textBox6->Text;
-			
+
 			if (existeEndereco == true)
 				cliente.endreco.Endereco = textBox2->Text;
 			//Cadastro de Profissão em Cliente
@@ -287,7 +291,8 @@ namespace TrabalhoCassandroV5 {
 			//Validar Cliente
 			cliente.Validate();
 			//Grava No Arquivo o cliente com suas infromações
-			FileStream^ fs = gcnew FileStream("C:\\Users\\Luiz Arndt\\Documents\\Visual Studio 2017\\Projects\\TrabalhoCassandroV5\\TrabalhoCassandroV5\\ClientesTxt.txt", FileMode::OpenOrCreate);
+			String^ path = Directory::GetCurrentDirectory();
+			FileStream^ fs = gcnew FileStream(path+"\\ClientesTxt.txt", FileMode::OpenOrCreate);
 			StreamWriter^ arquivoTxt = gcnew StreamWriter(fs);
 			arquivoTxt->WriteLine("Id :");
 			arquivoTxt->WriteLine(cliente.id);
@@ -300,6 +305,9 @@ namespace TrabalhoCassandroV5 {
 			arquivoTxt->Close();
 			MessageBox::Show("Cliente Gravado com sucesso !");
 			this->Close();
+			}
+			else
+				throw gcnew Exception("Cpf Inválido");
 		}
 		catch (Exception^ e)
 		{
@@ -309,22 +317,6 @@ namespace TrabalhoCassandroV5 {
 	private: System::Void btnCancelar_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
 	private: System::Void btnPesquisarCep_Click(System::Object^  sender, System::EventArgs^  e) {
-		String^ Path = "C:\\Users\\Luiz Arndt\\Documents\\Visual Studio 2017\\Projects\\TrabalhoCassandroV5\\TrabalhoCassandroV5\\cep2.txt";
-		int cont = 0;
-		FileStream^ fs = gcnew FileStream(Path, FileMode::Open);
-		StreamReader^ sr = gcnew StreamReader(fs);
-		while (sr->Peek()>=0)
-		{
-			String^ contens = sr->ReadLine();
-			if (contens->Contains(textBox2->Text) == true)
-			{
-				MessageBox::Show(contens);
-				existeEndereco = true;
-			}
-		}
-		if (existeEndereco == false)
-			throw gcnew Exception("Cep Invalido !");
-		sr->Close();
 	}
 private: System::Void btnProfissao_Click(System::Object^  sender, System::EventArgs^  e) 
 {
@@ -341,6 +333,29 @@ private: System::Void textBox3_TextChanged(System::Object^  sender, System::Even
 			MessageBox::Show("CPF Válido !");
 		else
 			MessageBox::Show("CPF Inválido !");
+	}
+}
+private: System::Void textBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+	if (textBox2->TextLength == 8)
+	{
+		String^ caminho = Directory::GetCurrentDirectory();
+		String^ Path = caminho+"\\cep2.txt";
+		int cont = 0;
+		FileStream^ fs = gcnew FileStream(Path, FileMode::Open);
+		StreamReader^ sr = gcnew StreamReader(fs);
+		while (sr->Peek() >= 0)
+		{
+			String^ contens = sr->ReadLine();
+			if (contens->Contains(textBox2->Text) == true)
+			{
+				MessageBox::Show(contens);
+				existeEndereco = true;
+			}
+		}
+		if (existeEndereco == false)
+			MessageBox::Show("Cep inválido");
+
+		sr->Close();
 	}
 }
 };

@@ -81,6 +81,15 @@
     <ClCompile Include="VendaDomainV2.cpp">
       <Filter>Arquivos de Origem\3.Domain\Features\Vendas</Filter>
     </ClCompile>
+    <ClCompile Include="Reavaliacao.cpp">
+      <Filter>Arquivos de Origem\1.WinApp</Filter>
+    </ClCompile>
+    <ClCompile Include="TelaCasado.cpp">
+      <Filter>Arquivos de Origem\1.WinApp</Filter>
+    </ClCompile>
+    <ClCompile Include="CasaAlugada.cpp">
+      <Filter>Arquivos de Origem\1.WinApp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FormPrincipal.h">
@@ -113,6 +122,15 @@
     <ClInclude Include="VendaDomainV2.h">
       <Filter>Arquivos de Cabeçalho\3.Domain\Features\Venda</Filter>
     </ClInclude>
+    <ClInclude Include="Reavaliacao.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="TelaCasado.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="CasaAlugada.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FormPrincipal.resx">
@@ -128,6 +146,12 @@
       <Filter>Arquivos de Recurso</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="CadastroVenda.resx">
+      <Filter>Arquivos de Recurso</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroVendaForm.resx">
+      <Filter>Arquivos de Recurso</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reavaliacao.resx">
       <Filter>Arquivos de Recurso</Filter>
     </EmbeddedResource>
   </ItemGroup>

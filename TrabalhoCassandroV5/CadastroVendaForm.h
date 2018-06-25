@@ -260,7 +260,8 @@ private: System::Void CadastroVendaForm_Load(System::Object^  sender, System::Ev
 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) 
 {
-	FileStream^ fs = gcnew FileStream("C:\\Users\\Luiz Arndt\\Documents\\Visual Studio 2017\\Projects\\TrabalhoCassandroV5\\TrabalhoCassandroV5\\ClientesTxt.txt", FileMode::OpenOrCreate);
+	String^ path = Directory::GetCurrentDirectory();
+	FileStream^ fs = gcnew FileStream(path+"\\ClientesTxt.txt", FileMode::Open);
 	StreamReader^ sr = gcnew StreamReader(fs);
 	while (sr->Peek()>=0)
 	{
@@ -310,7 +311,8 @@ private: System::Void btnCadastrar_Click(System::Object^  sender, System::EventA
 		{
 			double precoParcela = venda->valor / venda->prazo;
 			MessageBox::Show("Parabéns você adquiriu um " + venda->Bem + "\nValor :" + venda->valor + "\nPrazo :" + venda->prazo + "\nPreco por parcela :" + precoParcela.ToString());
-			FileStream^ fs = gcnew FileStream("C:\\Users\\Luiz Arndt\\Documents\\Visual Studio 2017\\Projects\\TrabalhoCassandroV5\\TrabalhoCassandroV5\\Vendas.txt", FileMode::OpenOrCreate);
+			String^ path = Directory::GetCurrentDirectory();
+			FileStream^ fs = gcnew FileStream(path+"\\Vendas.txt", FileMode::OpenOrCreate);
 			StreamWriter^ VendaEscrita = gcnew StreamWriter(fs);
 			VendaEscrita->WriteLine("Descrição :" + venda->Descricao);
 			VendaEscrita->WriteLine("Valor :" + venda->valor);

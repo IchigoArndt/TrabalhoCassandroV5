@@ -1,5 +1,6 @@
 #include "CadastroCliente.h"
 #include "CadastroVenda.h"
+#include "Reavaliacao.h"
 
 namespace TrabalhoCassandroV5 {
 
@@ -41,17 +42,11 @@ namespace TrabalhoCassandroV5 {
 	private: System::Windows::Forms::ToolStripMenuItem^  toolStripMenuItem2;
 
 	private: System::Windows::Forms::ToolStripMenuItem^  toolStripMenuItem4;
+	private: System::Windows::Forms::ToolStripMenuItem^  reavaliarToolStripMenuItem;
 
 	protected:
 
 	protected:
-
-
-
-
-
-
-
 	private:
 		/// <summary>
 		/// Variável de designer necessária.
@@ -70,6 +65,7 @@ namespace TrabalhoCassandroV5 {
 			this->toolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->toolStripMenuItem2 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->toolStripMenuItem4 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->reavaliarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -78,15 +74,15 @@ namespace TrabalhoCassandroV5 {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->toolStripMenuItem1 });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(242, 24);
+			this->menuStrip1->Size = System::Drawing::Size(253, 24);
 			this->menuStrip1->TabIndex = 7;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
 			// toolStripMenuItem1
 			// 
-			this->toolStripMenuItem1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+			this->toolStripMenuItem1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->toolStripMenuItem2,
-					this->toolStripMenuItem4
+					this->toolStripMenuItem4, this->reavaliarToolStripMenuItem
 			});
 			this->toolStripMenuItem1->Name = L"toolStripMenuItem1";
 			this->toolStripMenuItem1->Size = System::Drawing::Size(69, 20);
@@ -108,12 +104,20 @@ namespace TrabalhoCassandroV5 {
 			this->toolStripMenuItem4->Text = L"Venda";
 			this->toolStripMenuItem4->Click += gcnew System::EventHandler(this, &FormPrincipal::toolStripMenuItem4_Click);
 			// 
+			// reavaliarToolStripMenuItem
+			// 
+			this->reavaliarToolStripMenuItem->Name = L"reavaliarToolStripMenuItem";
+			this->reavaliarToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::R));
+			this->reavaliarToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->reavaliarToolStripMenuItem->Text = L"Reavaliar   ";
+			this->reavaliarToolStripMenuItem->Click += gcnew System::EventHandler(this, &FormPrincipal::reavaliarToolStripMenuItem_Click);
+			// 
 			// FormPrincipal
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(242, 402);
+			this->ClientSize = System::Drawing::Size(253, 269);
 			this->Controls->Add(this->menuStrip1);
 			this->Name = L"FormPrincipal";
 			this->Text = L"FormPrincipal";
@@ -125,7 +129,6 @@ namespace TrabalhoCassandroV5 {
 		}
 #pragma endregion
 	private: System::Void btnCadastrar_Click(System::Object^  sender, System::EventArgs^  e) {
-		this->Close();
 		CadastroCliente cc;
 		cc.ShowDialog();
 
@@ -139,6 +142,10 @@ private: System::Void toolStripMenuItem4_Click(System::Object^  sender, System::
 {
 	CadastroVenda cv;
 	cv.ShowDialog();
+}
+private: System::Void reavaliarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	Reavaliacao rv;
+	rv.ShowDialog();
 }
 };
 }

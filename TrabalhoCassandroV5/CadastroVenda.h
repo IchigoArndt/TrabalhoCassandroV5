@@ -126,7 +126,8 @@ namespace TrabalhoCassandroV5 {
 	private: void PopularListagem()
 	{
 		lbVendas->Items->Clear();
-		String^ Path = "C:\\Users\\Luiz Arndt\\Documents\\Visual Studio 2017\\Projects\\TrabalhoCassandroV5\\TrabalhoCassandroV5\\Vendas.txt";
+		String^ Caminho = Directory::GetCurrentDirectory();
+		String^ Path = Caminho+"\\Vendas.txt";
 		if (File::Exists(Path) == false)
 			MessageBox::Show("A lista será carregada vazia\n pois o arquivo não Existe !");
 		else
@@ -143,7 +144,8 @@ namespace TrabalhoCassandroV5 {
 	}
 private: System::Void btnDeletar_Click(System::Object^  sender, System::EventArgs^  e) 
 {
-	String^ Path = "C:\\Users\\Luiz Arndt\\Documents\\Visual Studio 2017\\Projects\\TrabalhoCassandroV5\\TrabalhoCassandroV5\\Vendas.txt";
+	String^ Caminho = Directory::GetCurrentDirectory();
+	String^ Path = Caminho+"\\Vendas.txt";
 	if (MessageBox::Show("você realmente deseja excluir", "deletar", MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes)
 	{
 		File::Delete(Path);

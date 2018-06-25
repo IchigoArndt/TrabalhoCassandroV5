@@ -38,6 +38,12 @@ bool ClienteDomainV2::verificaCpf(String^ cpf)
 	cpf = cpf->Replace(".","")->Replace("-","");
 	if (cpf->Length != 11)
 		return false;
+	if ((cpf->CompareTo("00000000000") == 0) || (cpf->CompareTo("11111111111") == 0) || (cpf->CompareTo("22222222222") == 0) ||
+		(cpf->CompareTo("33333333333") == 0) || (cpf->CompareTo("44444444444") == 0) || (cpf->CompareTo("55555555555") == 0) ||
+		(cpf->CompareTo("66666666666") == 0) || (cpf->CompareTo("77777777777") == 0) || (cpf->CompareTo("88888888888") == 0) ||
+		(cpf->CompareTo("99999999999") == 0)) {
+		return false;
+	}
 	tempCpf = cpf->Substring(0, 9);
 	soma = 0;
 
